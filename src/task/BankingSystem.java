@@ -7,7 +7,7 @@ public class BankingSystem {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String name;
-		
+		 
 		while(true) {
 		    System.out.print("Enter your name: ");
 		    name = sc.nextLine();

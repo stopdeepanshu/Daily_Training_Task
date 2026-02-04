@@ -29,7 +29,7 @@ public class Shop {
 					break;
 				}
 			}
-			if (flag) {
+			if ( flag) {
 				System.out.println("Product found");
 				System.out.println("Do you wants to quit?(Y/N):");
 				String choice = sc.nextLine();

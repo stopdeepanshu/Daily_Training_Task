@@ -5,7 +5,7 @@ public class firstUpperCase {
 		String str = "hello there how are you";
 		String[] arr = str.split(" ");
 		for (String s : arr) {
-			firstCharUpperCase(s);
+			 firstCharUpperCase(s);
 		}
 	}
 	
