@@ -42,7 +42,6 @@ public class BankingSystem {
 		} else if (withDrawAmt < currentBalance) {
 			System.out.println( "₹ "+withDrawAmt + name+" amount is debited from your account & your current Balance is "+(currentBalance-withDrawAmt));
 		}
-		
 		sc.close();
 	}
 }
