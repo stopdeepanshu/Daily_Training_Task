@@ -24,7 +24,7 @@ public class InsurancePolicy {
 	@Override
 	public String toString() {
 		return " Policy Number: " + policyNumber + "\n Policy Holder Name: " + customerName + "\n Age: " + customerAge
-				+ "\n Base Premium: " + basePremium + "\n Policy Status: " + policyStatus;
+				+ "\n Base Premium: " + basePremium + "\n Policy Status: " + policyStatus+"\n\n";
 	}
 
 	// calculate premium

@@ -1,0 +1,74 @@
+<project name="Java_Task" default="jar" basedir=".">
+
+	<!-- ===== Properties ===== -->
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="lib.dir" value="lib" />
+	<property name="mainfilehaiye.class" value="com.orderapplication.www.Driver" />
+
+	<!-- ===== build Clean target===== -->
+	<!-- re-compile karte hai to old class jo rehti ahi memory mein unsabko
+	delete krdeti hai-->
+	<target name="clean">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+
+	<!-- ===== initialzation:  ===== -->
+	<!--   lib folder create krta hai external jar file store krne ke liye.
+init: ka use hota hai required folder create krna jo bi need hai build se
+	pehle..-->
+
+	<target name="init">
+		<mkdir dir="${lib.dir}" />
+	</target>
+
+
+	<!-- ===== Compile ===== -->
+	<!-- lib folder create krta hai external jar file store krne ke liye.
+	 
+init: ka use hota hai required folder create krna jo bi need hai build se
+	pehle..
+      * classes naam ka folder create hoga.
+      * javac compiler run krta hai.
+	 * srcdir= "${src.dir} ka use hota hai ki source file src folder me hai.
+	 * destdir= compiled files yaha directory yani build/classes me jayengi. 
+	 * <classpath></classpath>: library folder ke saare jar include karega ye,
+	external 
+                                hone par ye jruri ho jata hai.
+     *-->
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${classes.dir}" />
+
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"
+			includeantruntime="false" debug="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="**/*.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+
+	<!-- ===== JAR ===== -->
+
+	<!--   JAR: is se final executable jar banta hai.-->
+	<target name="jar" depends="compile">
+
+		<mkdir dir="${jar.dir}" />
+
+		<jar destfile="${jar.dir}/OrderApplication.jar" basedir="${classes.dir}">
+
+			<manifest>
+				<attribute name="Main-Class" value="${mainfilehaiye.class}" />
+
+			</manifest>
+
+			<!-- down line is mandatory if using external file-->
+			<zipgroupfileset dir="${lib.dir}" includes="*.jar" />
+		</jar>
+
+	</target>
+
+</project>

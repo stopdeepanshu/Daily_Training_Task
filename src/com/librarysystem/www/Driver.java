@@ -21,17 +21,17 @@ public class Driver {
 
 			case 1:
 
-				int mId = 0;
-				String mName = "";
-				String mAdd = "";
+				int memberId = 0;
+				String memberName = "";
+				String memberAddress = "";
 
 				while (true) {
 					try {
 						System.out.println("Please enter the ID of the new member: ");
-						mId = sc.nextInt();
+						memberId = sc.nextInt();
 						sc.nextLine();
 
-						if (mId <= 0) {
+						if (memberId <= 0) {
 							System.err.println("ID must be greater than 0.");
 						} else {
 							break;
@@ -52,7 +52,7 @@ public class Driver {
 					} else if (!temp.matches("[a-zA-Z ]+")) {
 						System.err.println("invalid name,Enter letters only.");
 					} else {
-						mName = temp;
+						memberName = temp;
 						break;
 					}
 
@@ -68,7 +68,7 @@ public class Driver {
 						} else if (addtemp.matches("[0-9]+")) {
 							System.err.println("Address can't contain numebrs only.");
 						} else {
-							mAdd = addtemp;
+							memberAddress = addtemp;
 							break;
 						}
 					} catch (InputMismatchException e) {
@@ -76,7 +76,7 @@ public class Driver {
 
 				}
 
-				Member member = new Member(mName, mId, mAdd);
+				Member member = new Member(memberName, memberId, memberAddress);
 				try {
 					Library.addMember(member);
 					System.out.println("Member Added Successfully.\n");

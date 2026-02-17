@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-  
+
 public class Driver2 {
 	public static void main(String[] args) {
 
@@ -95,8 +95,13 @@ public class Driver2 {
 				System.out.println("Invalid Choice!");
 			}
 
+			//sort by Age 
 			System.out.println("\n\nSort List using Stream API.");
 			empList.stream().sorted(Comparator.comparing(Employee2::getAge)).forEach(System.out::println);
+
+			//calculate Bonus
+			System.out.println("\n\nCalculating bonus for each employee: ");
+			empList.stream().map(s -> s.getSalary() + s.getSalary() * 0.10).forEach(System.out::println);
 		}
 
 	}

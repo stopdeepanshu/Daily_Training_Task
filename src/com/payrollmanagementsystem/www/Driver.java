@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class Driver {
 	public static void main(String[] args) {
 
 		List<Employee> emp = new ArrayList<Employee>();
 		boolean running = true;
-		while (true) {
-			Scanner sc = new Scanner(System.in);
-			System.err.println("\n===== Employment Type Selection =====\n");
+		Scanner sc = new Scanner(System.in);
+
+		while (running) {
+			System.out.println("\n===== Employment Type Selection =====\n");
 
 			System.out.println("Press 1 for Permanent Employement");
 			System.out.println("Press 2 for Contractual Employement");
@@ -25,20 +25,21 @@ public class Driver {
 			case 1:
 
 				System.out.println("Enter your Employee Id: ");
-				String eId = sc.next();
+				String empId = sc.next();
 
 				System.out.println("Enter the Employee Name: ");
 				String name = sc.next();
 
 				System.out.println("Please Enter you department: ");
-				String department = sc.next();
-
+				String department = sc.nextLine();
+				sc.next();
+				
 				String type = "Permanent";
 
 				double salary = 0;
 				double hra;
 
-				// taking baseSalary
+				// taking baseSalary	
 				while (running) {
 					try {
 						System.out.println("Enter your base Salary: ");
@@ -47,6 +48,7 @@ public class Driver {
 						salary = temp;
 						break;
 					} catch (InvalidAmountException e) {
+					    System.err.println(e.getMessage());
 					}
 				}
 
@@ -59,11 +61,11 @@ public class Driver {
 						hra = temp;
 						break;
 					} catch (InvalidAmountException e) {
-
+					    System.err.println(e.getMessage());
 					}
 				}
 
-				PermanentEmployee pe = new PermanentEmployee(eId, name, department, type, salary, hra);
+				PermanentEmployee pe = new PermanentEmployee(empId, name, department, type, salary, hra);
 
 				System.out.println(pe.toString());
 				emp.add(pe);
@@ -74,10 +76,10 @@ public class Driver {
 				String cName;
 				int totalHours;
 				double hourlyRate;
-				double CHRA;
+				double chra;
 				
 				System.out.println("Enter your Employee Id: ");
-				String cEmpId = sc.next();
+				String contractEmpId = sc.next();
 				sc.nextLine();
 //				================================================
 
@@ -102,7 +104,6 @@ public class Driver {
 
 				String cType = "Contractual";
 				
-
 				// taking totalHours
 				while (true) {
 					try {
@@ -115,6 +116,7 @@ public class Driver {
 						System.out.println("Only numbers are allowed!");
 						sc.nextLine();
 					} catch (InvalidAmountException e) {
+					    System.err.println(e.getMessage());
 					}
 				}
 
@@ -130,7 +132,9 @@ public class Driver {
 					} catch (InputMismatchException e) {
 						System.err.println("Only numbers are allowed!");
 						sc.nextLine();
-					} catch (InvalidHoursException e) {
+					} 
+					catch (InvalidHoursException e) {
+					    System.err.println(e.getMessage());
 					}
 				}
 
@@ -140,17 +144,18 @@ public class Driver {
 						System.out.println("Please enter your HRA: ");
 						double temp = sc.nextDouble();
 						validHRA(temp);
-						CHRA = temp;
+						chra = temp;
 						break;
 					} catch (InputMismatchException e) {
 						System.err.println("Only numbers are allowed!");
 						sc.nextLine();
-					} catch (InvalidHoursException e) {
+					} catch (InvalidAmountException e) {
+					    System.err.println(e.getMessage());
 					}
 				}
 
-				ContractualEmployee ce = new ContractualEmployee(cEmpId, cName, cDepartment, cType, totalHours,
-						hourlyRate, CHRA);
+				ContractualEmployee ce = new ContractualEmployee(contractEmpId, cName, cDepartment, cType, totalHours,
+						hourlyRate, chra);
 				System.out.println(ce.toString());
 				emp.add(ce);
 				break;
@@ -159,30 +164,27 @@ public class Driver {
 				running = false;
 				break;
 			default:
-				System.out.println("Please select the valid option.");
-				running=true;
+				System.err.println("Please select the valid option.");
 				break;
 			}
-			if(!running)System.out.println(emp);
+			if(running)System.out.println(emp);
 		}
-
 	}
 
 	private static void validName(String cName) {
 
 	    if (!cName.matches("^[a-zA-Z]+( [a-zA-Z]+)*$") || cName.length() < 3) {
-	        throw new IllegalArgumentException(
+	        throw new IllegalArgumentException(                        
 	                "Invalid Name! Only alphabets and single spaces allowed. Minimum 3 characters.");
 	    }
 	}
-
 
 	private static void validHours(int sal) {
 		if (sal <= 0) {
 			throw new InvalidHoursException(" Invalid Hours!! Please try again.");
 		}
 	}
-
+	
 	private static void validHRA(double sal) {
 		if (sal <= 0) {
 			throw new InvalidAmountException(true);

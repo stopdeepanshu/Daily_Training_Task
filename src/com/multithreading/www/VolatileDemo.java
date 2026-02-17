@@ -8,7 +8,7 @@ public class VolatileDemo {
 		Thread t1 = new Thread(() -> {
 
 			while (!flag) {
-
+				System.out.println("hiiiiiiiiiiii");
 			}
 			System.out.println("Flag value updated.");
 		}, "Thread-1");

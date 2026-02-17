@@ -20,7 +20,7 @@ public class BankingSystem {
 		}
 		
 		
-		int currentBalance = 79999;
+		int currentBalance = 80000;
 		int withDrawAmt=0;
 		System.out.println("Your current balance is " + currentBalance+".");
 	

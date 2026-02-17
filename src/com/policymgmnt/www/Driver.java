@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidPolicyTypeException {
 		Scanner sc = new Scanner(System.in);
 
+		
 		while (true) {
 
 			System.out.println("\nWELCOME TO THE POLICY MANAGEMENT SYSTEM\n");
@@ -165,11 +166,7 @@ public class Driver {
 				break;
 			// count of policies on the basis of policy types.
 			case 6:
-				try {
-					Service.countByPolicyType();
-				} catch (InvalidPolicyTypeException e) {
-					e.printStackTrace();
-				}
+				Service.countFromHashMap();
 				break;
 			// exit
 			case 7:
