@@ -363,4 +363,5 @@ join orders o
 on p.prod_id=o.product_id
 group by p.prod_name;
 
+--END of Day 2
 

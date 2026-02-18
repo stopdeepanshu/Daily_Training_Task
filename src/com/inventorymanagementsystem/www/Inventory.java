@@ -2,7 +2,7 @@ package com.inventorymanagementsystem.www;
 
 public class Inventory {
 
-	private int stock;
+	private int stock;//10
 
 	public Inventory(int stock) {
 		this.stock = stock;
