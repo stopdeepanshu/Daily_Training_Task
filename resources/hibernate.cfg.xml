@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+	<session-factory><!--jitne bhi session factory honge utne hum diffrent DB 
+			se connect kr skte hai -->
+
+		<!-- DB Connection -->
+		<property name="hibernate.connection.driver_class">
+			org.postgresql.Driver   <!-- ctrl +shift+T(used to check the type of ) -->
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:postgresql://localhost:5432/hibernatedb <!-- // here we gave the DB name for whom to connect with.// new DB
+			create krke add kr denge.//portno for postgresql-5432 -->
+		</property>
+
+		<property name="hibernate.connection.username">postgres</property> <!-- db username -->
+		
+		<property name="hibernate.connection.password">root</property>  <!-- db password -->
+		
+
+		<!-- Dialect -->
+		
+		<property name="hibernate.dialect"> <!-- Bhai, main PostgreSQL use kar raha hoon, uske hisaab se SQL bana." -->
+			org.hibernate.dialect.PostgreSQLDialect
+		</property>
+
+		<!-- Automatically Create Tables -->
+		<property name="hibernate.hbm2ddl.auto">create</property> <!-- //hbm is hibernate mapping file// update, create-drop -->
+		
+		<property name="hibernate.show_sql">true</property>
+		<!-- XML Mapping Files -->
+		<mapping resource="Product.hbm.xml" />
+		<mapping resource="Order.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
