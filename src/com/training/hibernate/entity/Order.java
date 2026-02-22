@@ -15,6 +15,7 @@ public class Order {
 	}
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
+		
 	}
 	public String getOrderType() {
 		return orderType;
@@ -33,7 +34,5 @@ public class Order {
 	}
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-	
-	
+	}	
 }

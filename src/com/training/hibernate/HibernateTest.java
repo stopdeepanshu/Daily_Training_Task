@@ -69,7 +69,7 @@ public class HibernateTest {
 		//find all the product
 		transaction.commit();// autcommit by default off, thats why we need to do this.
 		
-		System.out.println("=====================================================================");
+		System.out.println("===================================================================");
 
 		SelectionQuery<Product> selectionquery = (SelectionQuery<Product>)session.createSelectionQuery("from Product", Product.class);
 		List<Product> resultSet=selectionquery.getResultList();

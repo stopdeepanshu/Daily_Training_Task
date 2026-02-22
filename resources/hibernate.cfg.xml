@@ -14,6 +14,7 @@
 			create krke add kr denge.//portno for postgresql-5432 -->
 		</property>
 
+
 		<property name="hibernate.connection.username">postgres</property> <!-- db username -->
 		
 		<property name="hibernate.connection.password">root</property>  <!-- db password -->

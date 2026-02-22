@@ -10,5 +10,6 @@
         <many-to-one name="product" column="prodId"
                      class="com.training.hibernate.entity.Product"
                      not-null="true"/>
+                     
     </class>
 </hibernate-mapping>

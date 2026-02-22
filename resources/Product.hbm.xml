@@ -8,6 +8,7 @@
         <property name="prodName"/>
         <property name="prodDesc"/>
         <property name="price"/>
+        
       <!-- <set name="orders" inverse="true" cascade="all">
             <key column="prodId"/>
             
