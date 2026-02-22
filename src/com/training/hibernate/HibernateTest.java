@@ -13,7 +13,7 @@ import com.training.hibernate.util.HibernateUtil;
 
 public class HibernateTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 
 		Session session = HibernateUtil.getSessionfactory().openSession();
 		Transaction transaction = session.beginTransaction();// transaction should be on session only
@@ -35,11 +35,11 @@ public class HibernateTest {
 		
 		session.persist(product2);// saving only
 		
-		product3.setProdName("Bottle");
+		product3.setProdName("Milton Bottle");
 		product3.setProdDesc("Household");
 		product3.setPrice(100);
 		
-		session.persist(product3);// saving onlyd
+		session.persist(product3);// saving only
 		
 		
 		Order order1 = new Order();
@@ -69,7 +69,7 @@ public class HibernateTest {
 		//find all the product
 		transaction.commit();// autcommit by default off, thats why we need to do this.
 		
-		System.out.println("=============================================================");
+		System.out.println("=====================================================================");
 
 		SelectionQuery<Product> selectionquery = (SelectionQuery<Product>)session.createSelectionQuery("from Product", Product.class);
 		List<Product> resultSet=selectionquery.getResultList();
@@ -77,7 +77,7 @@ public class HibernateTest {
 		    System.out.println(p.getProdId() + " - " + p.getProdName());
 		}
 		
-		System.out.println("=============================================================");
+		System.out.println("===================================================================");
 		session.close();
 		System.out.println("Data Saved Successfully.");
 	}
